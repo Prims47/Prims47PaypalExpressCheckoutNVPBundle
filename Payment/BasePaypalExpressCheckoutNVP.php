@@ -151,7 +151,6 @@ abstract class BasePaypalExpressCheckoutNVP implements PaypalExpressCheckoutNVPI
           'SIGNATURE'                     => $signature,
           'PWD'                           => $pwd,
           'PAYMENTREQUEST_0_CURRENCYCODE' => $currencyCode,
-          'PAYMENTREQUEST_0_HANDLINGAMT'  => $costs,
           'VERSION'                       => $version,
           'RETURNURL'                     => $this->router->generate($returnRouteSimple, array(), true),
           'CANCELURL'                     => $this->router->generate($cancelRoute, array(), true),

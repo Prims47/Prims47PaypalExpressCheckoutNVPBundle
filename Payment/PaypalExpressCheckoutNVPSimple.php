@@ -37,11 +37,12 @@ class PaypalExpressCheckoutNVPSimple extends BasePaypalExpressCheckoutNVP
         $totalDuty = $basket[self::PAYPAL_TOTAL_DUTY];
         $vat       = $this->calcul->calculVAT($totalDuty, $vatPercentage);
 
-        $this->optionsRequest['RETURNURL']                = $this->router->generate($this->returnRouteSimple, array(), true);
-        $this->optionsRequest['METHOD']                   = self::PAYPAL_METHOD_SET_EXPRESS_CHECKOUT;
-        $this->optionsRequest['PAYMENTREQUEST_0_AMT']     = $totalDuty + $costs + $vat;
-        $this->optionsRequest['PAYMENTREQUEST_0_ITEMAMT'] = $totalDuty;
-        $this->optionsRequest['PAYMENTREQUEST_0_TAXAMT']  = $vat;
+        $this->optionsRequest['RETURNURL']                    = $this->router->generate($this->returnRouteSimple, array(), true);
+        $this->optionsRequest['METHOD']                       = self::PAYPAL_METHOD_SET_EXPRESS_CHECKOUT;
+        $this->optionsRequest['PAYMENTREQUEST_0_AMT']         = $totalDuty + $costs + $vat;
+        $this->optionsRequest['PAYMENTREQUEST_0_ITEMAMT']     = $totalDuty;
+        $this->optionsRequest['PAYMENTREQUEST_0_TAXAMT']      = $vat;
+        $this->optionsRequest['PAYMENTREQUEST_0_HANDLINGAMT'] = $costs;
 
         $this->session->set(self::PAYPAL_SET_EXPRESS_CHECKOUT_SESSION_TOTAL_DUTY, $totalDuty);
         $this->session->set(self::PAYPAL_SET_EXPRESS_CHECKOUT_SESSION_VAT, $vat);
