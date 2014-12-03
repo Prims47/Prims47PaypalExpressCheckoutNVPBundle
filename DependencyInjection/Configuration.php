@@ -38,7 +38,7 @@ class Configuration implements ConfigurationInterface
             ->scalarNode('user')->isRequired()->end()
             ->scalarNode('signature')->isRequired()->end()
             ->scalarNode('pwd')->isRequired()->end()
-            ->scalarNode('cancel_url')->isRequired()->end()
+            ->scalarNode('cancel_route')->isRequired()->end()
             ->scalarNode('route_redirect_success')->isRequired()->end()
             ->scalarNode('return_route_simple')->defaultValue('prims47_paypal_express_checkout_nvp_return_api_simple')->end()
             ->scalarNode('return_route_details')->defaultValue('prims47_paypal_express_checkout_nvp_return_api_details')->end()

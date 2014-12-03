@@ -21,6 +21,6 @@
         "phpunit/phpunit": "4.5.*@dev"
     },
     "autoload": {
-        "psr-4": { "Prims47\\Bundle\\PaypalExpressCheckoutNVPBundle\\": "" }
+        "psr-0": { "Prims47\\Bundle\\PaypalExpressCheckoutNVPBundle\\": "" }
     }
 }

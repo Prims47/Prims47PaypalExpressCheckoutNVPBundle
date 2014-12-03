@@ -22,7 +22,7 @@ use Prims47\Bundle\PaypalExpressCheckoutNVPBundle\Entity\BasePaypalExpressChecko
 use Prims47\Bundle\PaypalExpressCheckoutNVPBundle\Calcul\Calcul;
 use Prims47\Bundle\PaypalExpressCheckoutNVPBundle\Validation\Validation;
 
-use Symfony\Component\EventDispatcher\EventDispatcher;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Routing\Router;
 
@@ -137,7 +137,7 @@ abstract class BasePaypalExpressCheckoutNVP implements PaypalExpressCheckoutNVPI
       Calcul $calcul,
       Validation $validation,
       Logger $logger,
-      EventDispatcher $dispatcher
+      EventDispatcherInterface $dispatcher
     )
     {
         $this->router       = $router;

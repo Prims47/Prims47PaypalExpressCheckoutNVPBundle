@@ -10,7 +10,7 @@
         <parameter key="prims47.bundle.paypal_express_checkout_nvp.validation.class">Prims47\Bundle\PaypalExpressCheckoutNVPBundle\Validation\Validation</parameter>
         <parameter key="prims47.bundle.paypal_express_checkout_nvp.simple.class">Prims47\Bundle\PaypalExpressCheckoutNVPBundle\Payment\PaypalExpressCheckoutNVPSimple</parameter>
         <parameter key="prims47.bundle.paypal_express_checkout_nvp.details.class">Prims47\Bundle\PaypalExpressCheckoutNVPBundle\Payment\PaypalExpressCheckoutNVPDetails</parameter>
-        <parameter key="prims47.paypal_express_checkout_nvp.twig.extension.class">Prims47\Bundle\PaypalExpressCheckoutNVPBundle\Twig\Prims47PaypalExpressCheckoutNVPExtension</parameter>
+        <parameter key="prims47.paypal_express_checkout_nvp.twig.extension.class">Prims47\Bundle\PaypalExpressCheckoutNVPBundle\Twig\Extension\Prims47PaypalExpressCheckoutNVPExtension</parameter>
     </parameters>
 
     <services>

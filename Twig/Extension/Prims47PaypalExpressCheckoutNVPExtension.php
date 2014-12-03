@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Prims47\Bundle\PaypalExpressCheckoutNVPBundle\Twig;
+namespace Prims47\Bundle\PaypalExpressCheckoutNVPBundle\Twig\Extension;
 
 use Prims47\Bundle\PaypalExpressCheckoutNVPBundle\Calcul\Calcul;
 use Prims47\Bundle\PaypalExpressCheckoutNVPBundle\Payment\PaypalExpressCheckoutNVPDetails;
