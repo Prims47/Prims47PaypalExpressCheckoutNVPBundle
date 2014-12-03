@@ -4,11 +4,11 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://symfony.com/schema/routing http://symfony.com/schema/routing/routing-1.0.xsd">
 
-    <route id="prims47_paypal_express_checkout_nvp_return_api_simple" pattern="/return_api_simple">
+    <route id="prims47_paypal_express_checkout_nvp_return_api_simple" pattern="/redirect_api_simple">
         <default key="_controller">Prims47PaypalExpressCheckoutNVPBundle:Payment:redirectApiSimple</default>
     </route>
 
-    <route id="prims47_paypal_express_checkout_nvp_return_api_details" pattern="/return_api_details">
+    <route id="prims47_paypal_express_checkout_nvp_return_api_details" pattern="/redirect_api_details">
         <default key="_controller">Prims47PaypalExpressCheckoutNVPBundle:Payment:redirectApiDetails</default>
     </route>
 
