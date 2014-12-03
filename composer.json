@@ -1,0 +1,26 @@
+{
+    "name": "prims47/paypal-express-checkout-nvp",
+    "license": "MIT",
+    "type": "symfony-bundle",
+    "description": "Symfony2 Prims47PaypalExpressCheckoutNVPBundle",
+    "keywords": ["symfony2", "bundle", "translate"],
+    "authors": [
+        {
+            "name": "Ilan B",
+            "email": "ilan.prims@gmail.com",
+            "homepage": "http://ilanbenhamou.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3",
+        "symfony/symfony": "2.6.x-dev",
+        "doctrine/orm": "~2.2,>=2.2.3",
+        "guzzle/guzzle": "3.9.*@dev"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "4.5.*@dev"
+    },
+    "autoload": {
+        "psr-4": { "Prims47\\Bundle\\PaypalExpressCheckoutNVPBundle\\": "" }
+    }
+}

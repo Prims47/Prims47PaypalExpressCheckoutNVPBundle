@@ -1,0 +1,86 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+        <parameter key="guzzle.client.class">Guzzle\Http\Client</parameter>
+        <parameter key="prims47.bundle.paypal_express_checkout_nvp.calcul.class">Prims47\Bundle\PaypalExpressCheckoutNVPBundle\Calcul\Calcul</parameter>
+        <parameter key="prims47.bundle.paypal_express_checkout_nvp.validation.class">Prims47\Bundle\PaypalExpressCheckoutNVPBundle\Validation\Validation</parameter>
+        <parameter key="prims47.bundle.paypal_express_checkout_nvp.simple.class">Prims47\Bundle\PaypalExpressCheckoutNVPBundle\Payment\PaypalExpressCheckoutNVPSimple</parameter>
+        <parameter key="prims47.bundle.paypal_express_checkout_nvp.details.class">Prims47\Bundle\PaypalExpressCheckoutNVPBundle\Payment\PaypalExpressCheckoutNVPDetails</parameter>
+        <parameter key="prims47.paypal_express_checkout_nvp.twig.extension.class">Prims47\Bundle\PaypalExpressCheckoutNVPBundle\Twig\Prims47PaypalExpressCheckoutNVPExtension</parameter>
+    </parameters>
+
+    <services>
+        <service id="guzzle.client" class="%guzzle.client.class%" />
+
+        <service id="prims47.bundle.paypal_express_checkout_nvp.calcul" class="%prims47.bundle.paypal_express_checkout_nvp.calcul.class%" />
+
+        <service id="prims47.bundle.paypal_express_checkout_nvp.validation" class="%prims47.bundle.paypal_express_checkout_nvp.validation.class%" />
+
+        <service id="prims47.bundle.paypal_express_checkout_nvp.simple" class="%prims47.bundle.paypal_express_checkout_nvp.simple.class%">
+            <argument type="service" id="router" />
+            <argument type="service" id="session" />
+            <argument type="service" id="doctrine" />
+            <argument type="service" id="guzzle.client" />
+            <argument>%prims47_paypal_express_checkout_nvp_user%</argument>
+            <argument>%prims47_paypal_express_checkout_nvp_signature%</argument>
+            <argument>%prims47_paypal_express_checkout_nvp_pwd%</argument>
+            <argument>%prims47_paypal_express_checkout_nvp_return_route_simple%</argument>
+            <argument>%prims47_paypal_express_checkout_nvp_return_route_details%</argument>
+            <argument>%prims47_paypal_express_checkout_nvp_cancel_route%</argument>
+            <argument>%prims47_paypal_express_checkout_nvp_route_redirect_success%</argument>
+            <argument>%prims47_paypal_express_checkout_nvp_costs%</argument>
+            <argument>%prims47_paypal_express_checkout_nvp_currency_code%</argument>
+            <argument>%prims47_paypal_express_checkout_nvp_version%</argument>
+            <argument>%prims47_paypal_express_checkout_nvp_is_ssl%</argument>
+            <argument>%prims47_paypal_express_checkout_nvp_path_ssl%</argument>
+            <argument>%prims47_paypal_express_checkout_nvp_vat_percentage%</argument>
+            <argument>%prims47_paypal_express_checkout_nvp_is_prod%</argument>
+            <argument>%prims47_paypal_express_checkout_nvp_url_api%</argument>
+            <argument>%prims47_paypal_express_checkout_nvp_url_cmd_express_checkout%</argument>
+            <argument type="service" id="prims47.bundle.paypal_express_checkout_nvp.calcul" />
+            <argument type="service" id="prims47.bundle.paypal_express_checkout_nvp.validation" />
+            <argument type="service" id="logger" />
+            <argument type="service" id="event_dispatcher" />
+        </service>
+
+        <service id="prims47.bundle.paypal_express_checkout_nvp.details" class="%prims47.bundle.paypal_express_checkout_nvp.details.class%">
+            <argument type="service" id="router" />
+            <argument type="service" id="session" />
+            <argument type="service" id="doctrine" />
+            <argument type="service" id="guzzle.client" />
+            <argument>%prims47_paypal_express_checkout_nvp_user%</argument>
+            <argument>%prims47_paypal_express_checkout_nvp_signature%</argument>
+            <argument>%prims47_paypal_express_checkout_nvp_pwd%</argument>
+            <argument>%prims47_paypal_express_checkout_nvp_return_route_simple%</argument>
+            <argument>%prims47_paypal_express_checkout_nvp_return_route_details%</argument>
+            <argument>%prims47_paypal_express_checkout_nvp_cancel_route%</argument>
+            <argument>%prims47_paypal_express_checkout_nvp_route_redirect_success%</argument>
+            <argument>%prims47_paypal_express_checkout_nvp_costs%</argument>
+            <argument>%prims47_paypal_express_checkout_nvp_currency_code%</argument>
+            <argument>%prims47_paypal_express_checkout_nvp_version%</argument>
+            <argument>%prims47_paypal_express_checkout_nvp_is_ssl%</argument>
+            <argument>%prims47_paypal_express_checkout_nvp_path_ssl%</argument>
+            <argument>%prims47_paypal_express_checkout_nvp_vat_percentage%</argument>
+            <argument>%prims47_paypal_express_checkout_nvp_is_prod%</argument>
+            <argument>%prims47_paypal_express_checkout_nvp_url_api%</argument>
+            <argument>%prims47_paypal_express_checkout_nvp_url_cmd_express_checkout%</argument>
+            <argument type="service" id="prims47.bundle.paypal_express_checkout_nvp.calcul" />
+            <argument type="service" id="prims47.bundle.paypal_express_checkout_nvp.validation" />
+            <argument type="service" id="logger" />
+            <argument type="service" id="event_dispatcher" />
+        </service>
+
+        <service id="prims47.paypal_express_checkout_nvp.twig.extension" class="%prims47.paypal_express_checkout_nvp.twig.extension.class%">
+            <tag name="twig.extension" />
+            <argument type="service" id="prims47.bundle.paypal_express_checkout_nvp.details" />
+            <argument type="service" id="prims47.bundle.paypal_express_checkout_nvp.simple" />
+            <argument type="service" id="prims47.bundle.paypal_express_checkout_nvp.calcul" />
+        </service>
+
+    </services>
+
+</container>
