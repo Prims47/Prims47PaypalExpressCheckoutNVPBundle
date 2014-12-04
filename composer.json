@@ -1,9 +1,9 @@
 {
-    "name": "prims47/paypal-express-checkout-nvp",
+    "name": "prims47/paypal-express-checkout-nvp-bundle",
     "license": "MIT",
     "type": "symfony-bundle",
     "description": "Symfony2 Prims47PaypalExpressCheckoutNVPBundle",
-    "keywords": ["symfony2", "bundle", "translate"],
+    "keywords": ["symfony2", "bundle", "paypal", "payment", "paypal express checkout"],
     "authors": [
         {
             "name": "Ilan B",
