@@ -306,7 +306,6 @@ abstract class BasePaypalExpressCheckoutNVP implements PaypalExpressCheckoutNVPI
         $checkoutDetails['SHIPTOCOUNTRYNAME'] = $responsePaypal['SHIPTOCOUNTRYNAME'];
         $checkoutDetails['SHIPTOSTREET']      = $responsePaypal['SHIPTOSTREET'];
         $checkoutDetails['SHIPTOCITY']        = $responsePaypal['SHIPTOCITY'];
-        $checkoutDetails['SHIPTOCOUNTRYNAME'] = $responsePaypal['SHIPTOCOUNTRYNAME'];
         $checkoutDetails['SHIPTOZIP']         = $responsePaypal['SHIPTOZIP'];
         $checkoutDetails['CURRENCYCODE']      = $responsePaypal['CURRENCYCODE'];
         $checkoutDetails['TAXAMT']            = $responsePaypal['TAXAMT'];
@@ -330,7 +329,7 @@ abstract class BasePaypalExpressCheckoutNVP implements PaypalExpressCheckoutNVPI
         $vat           = $this->getSessionByName(self::PAYPAL_SET_EXPRESS_CHECKOUT_SESSION_VAT);
         $costs         = $this->getSessionByName(self::PAYPAL_SET_EXPRESS_CHECKOUT_SESSION_COSTS);
 
-        if (!empty($responsePaypal['PAYMENTREQUEST_0_AMT']) && $responsePaypal['PAYMENTREQUEST_0_AMT'] != ($totalDutyFree + $vat + $costs)) {
+        if (!isset($responsePaypal['PAYMENTREQUEST_0_AMT']) || $responsePaypal['PAYMENTREQUEST_0_AMT'] != ($totalDutyFree + $vat + $costs)) {
             throw new \Exception('Invalid total duty. Please check your basket.');
         }
 
