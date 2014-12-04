@@ -352,7 +352,6 @@ abstract class BasePaypalExpressCheckoutNVP implements PaypalExpressCheckoutNVPI
         $transactionDetails->setCountryName($paymentDetails['SHIPTOCOUNTRYNAME']);
         $transactionDetails->setStreet($paymentDetails['SHIPTOSTREET']);
         $transactionDetails->setCity($paymentDetails['SHIPTOCITY']);
-        $transactionDetails->setState($paymentDetails['SHIPTOCOUNTRYNAME']);
         $transactionDetails->setZip($paymentDetails['SHIPTOZIP']);
         $transactionDetails->setCurrencyCode($paymentDetails['CURRENCYCODE']);
 

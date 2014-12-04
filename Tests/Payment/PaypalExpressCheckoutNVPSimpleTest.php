@@ -31,6 +31,9 @@ class PaypalExpressCheckoutNVPSimpleTest extends \PHPUnit_Framework_TestCase
      */
     protected $guzzleResponse;
 
+    /**
+     * @var Session
+     */
     protected $session;
 
     protected function setUp()

@@ -56,11 +56,6 @@ class BasePaypalExpressCheckoutNVPTransactionDetails
     /**
      * @var string
      */
-    private $state;
-
-    /**
-     * @var string
-     */
     private $zip;
 
     /**
@@ -271,26 +266,6 @@ class BasePaypalExpressCheckoutNVPTransactionDetails
     public function getOrderTime()
     {
         return $this->orderTime;
-    }
-
-    /**
-     * Set state.
-     *
-     * @param string $state
-     */
-    public function setState($state)
-    {
-        $this->state = $state;
-    }
-
-    /**
-     * Get state.
-     *
-     * @return string
-     */
-    public function getState()
-    {
-        return $this->state;
     }
 
     /**

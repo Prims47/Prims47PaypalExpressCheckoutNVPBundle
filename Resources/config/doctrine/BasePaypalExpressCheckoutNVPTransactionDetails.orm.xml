@@ -12,7 +12,6 @@
         <field name="countryName"  column="country_name"  type="string" length="255" />
         <field name="street"       column="street"        type="string" length="255" />
         <field name="city"         column="city"          type="string" length="255" />
-        <field name="state"        column="state"         type="string" length="255" />
         <field name="zip"          column="zip"           type="string" length="255" />
         <field name="currencyCode" column="currency_code" type="string" length="255" />
 
