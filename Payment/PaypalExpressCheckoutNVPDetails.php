@@ -11,7 +11,7 @@
 
 namespace Prims47\Bundle\PaypalExpressCheckoutNVPBundle\Payment;
 
-use Paypal\Bundle\ExpressCheckoutBundle\Event\TransactionEvent;
+use Prims47\Bundle\PaypalExpressCheckoutNVPBundle\Event\TransactionEvent;
 
 class PaypalExpressCheckoutNVPDetails extends BasePaypalExpressCheckoutNVP
 {
