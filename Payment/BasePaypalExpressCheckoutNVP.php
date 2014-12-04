@@ -306,7 +306,7 @@ abstract class BasePaypalExpressCheckoutNVP implements PaypalExpressCheckoutNVPI
         $checkoutDetails['SHIPTOCOUNTRYNAME'] = $responsePaypal['SHIPTOCOUNTRYNAME'];
         $checkoutDetails['SHIPTOSTREET']      = $responsePaypal['SHIPTOSTREET'];
         $checkoutDetails['SHIPTOCITY']        = $responsePaypal['SHIPTOCITY'];
-        $checkoutDetails['SHIPTOSTATE']       = $responsePaypal['SHIPTOSTATE'];
+        $checkoutDetails['SHIPTOCOUNTRYNAME'] = $responsePaypal['SHIPTOCOUNTRYNAME'];
         $checkoutDetails['SHIPTOZIP']         = $responsePaypal['SHIPTOZIP'];
         $checkoutDetails['CURRENCYCODE']      = $responsePaypal['CURRENCYCODE'];
         $checkoutDetails['TAXAMT']            = $responsePaypal['TAXAMT'];
@@ -353,7 +353,7 @@ abstract class BasePaypalExpressCheckoutNVP implements PaypalExpressCheckoutNVPI
         $transactionDetails->setCountryName($paymentDetails['SHIPTOCOUNTRYNAME']);
         $transactionDetails->setStreet($paymentDetails['SHIPTOSTREET']);
         $transactionDetails->setCity($paymentDetails['SHIPTOCITY']);
-        $transactionDetails->setState($paymentDetails['SHIPTOSTATE']);
+        $transactionDetails->setState($paymentDetails['SHIPTOCOUNTRYNAME']);
         $transactionDetails->setZip($paymentDetails['SHIPTOZIP']);
         $transactionDetails->setCurrencyCode($paymentDetails['CURRENCYCODE']);
 

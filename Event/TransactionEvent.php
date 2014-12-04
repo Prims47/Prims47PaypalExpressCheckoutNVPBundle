@@ -1,8 +1,17 @@
 <?php
 
-namespace Paypal\Bundle\ExpressCheckoutBundle\Event;
+/*
+ * This file is part of the Prims47 package.
+ *
+ * (c) Ilan Benhamou <ilan.primsx@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 
-use Paypal\Bundle\ExpressCheckoutBundle\Entity\BasePaypalExpressCheckoutNVPTransactionDetails;
+namespace Prims47\Bundle\PaypalExpressCheckoutNVPBundle\Event;
+
+use Prims47\Bundle\PaypalExpressCheckoutNVPBundle\Entity\BasePaypalExpressCheckoutNVPTransactionDetails;
 
 use Symfony\Component\EventDispatcher\Event;
 

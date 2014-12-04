@@ -94,13 +94,14 @@ class PaypalExpressCheckoutNVPDetails extends BasePaypalExpressCheckoutNVP
         $costs     = $this->getSessionByName(self::PAYPAL_SET_EXPRESS_CHECKOUT_SESSION_COSTS);
         $basket    = $this->getSessionByName(self::PAYPAL_SET_EXPRESS_CHECKOUT_SESSION_FULL_BASKET);
 
-        $this->optionsRequest['METHOD']                   = self::PAYPAL_METHOD_DO_EXPRESS_CHECKOUT_PAYMENT;
-        $this->optionsRequest['TOKEN']                    = $token;
-        $this->optionsRequest['PAYERID']                  = $payerId;
-        $this->optionsRequest['PAYMENTACTION']            = self::PAYPAL_PAYMENTACTION;
-        $this->optionsRequest['PAYMENTREQUEST_0_ITEMAMT'] = $totalDuty;
-        $this->optionsRequest['PAYMENTREQUEST_0_AMT']     = $totalDuty + $costs + $vat;
-        $this->optionsRequest['PAYMENTREQUEST_0_TAXAMT']  = $vat;
+        $this->optionsRequest['METHOD']                       = self::PAYPAL_METHOD_DO_EXPRESS_CHECKOUT_PAYMENT;
+        $this->optionsRequest['TOKEN']                        = $token;
+        $this->optionsRequest['PAYERID']                      = $payerId;
+        $this->optionsRequest['PAYMENTACTION']                = self::PAYPAL_PAYMENTACTION;
+        $this->optionsRequest['PAYMENTREQUEST_0_ITEMAMT']     = $totalDuty;
+        $this->optionsRequest['PAYMENTREQUEST_0_AMT']         = $totalDuty + $costs + $vat;
+        $this->optionsRequest['PAYMENTREQUEST_0_TAXAMT']      = $vat;
+        $this->optionsRequest['PAYMENTREQUEST_0_HANDLINGAMT'] = $costs;
 
         $this->optionsRequest = array_merge($this->optionsRequest, $basket);
 
