@@ -31,7 +31,6 @@ Use Twig Helpers for Button Paypal
 You can use Twig helpers
 
 * prims47_paypal_express_checkout_nvp_simple
-* prims47_paypal_express_checkout_nvp_details
 
 Parameters of Twig helper
 

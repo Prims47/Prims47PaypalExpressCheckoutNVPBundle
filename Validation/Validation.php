@@ -37,7 +37,12 @@ class Validation implements ValidationInterface
             throw new \Exception('You must given an array of your basket.');
         }
 
+        // @todo: Add test u for !is_array
         foreach ($basket as $basketElement) {
+            if (!is_array($basketElement)) {
+                throw new \Exception('You must given an array');
+            }
+
             if (!array_key_exists(PaypalExpressCheckoutNVPInterface::L_PAYMENTREQUEST_NAME, $basketElement)) {
                 throw new \Exception(sprintf('You must given a key for indicate "name" for Paypal. "%s" expected.', PaypalExpressCheckoutNVPInterface::L_PAYMENTREQUEST_NAME));
             }
