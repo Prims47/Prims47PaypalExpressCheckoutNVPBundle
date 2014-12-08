@@ -31,31 +31,31 @@ $ php composer.phar require prims47/paypal-express-checkout-nvp-bundle
 
 
 Enable the bundle
-^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^
 
 .. code-block:: php
 
-<?php
-// app/AppKernel.php
-public function registerBundles()
-{
-    return array(
-        // ...
-        // Then add Prims47PaypalExpressCheckoutNVPBundle
-        new Prims47\Bundle\PaypalExpressCheckoutNVPBundle\Prims47PaypalExpressCheckoutNVPBundle(),
-        // ...
-    );
-}
+    <?php
+        // app/AppKernel.php
+        public function registerBundles()
+        {
+            return array(
+                // ...
+                // Then add Prims47PaypalExpressCheckoutNVPBundle
+                new Prims47\Bundle\PaypalExpressCheckoutNVPBundle\Prims47PaypalExpressCheckoutNVPBundle(),
+                // ...
+            );
+        }
 
 Routing
 ^^^^^^^
 
-.. code-block:: yml
+.. code-block:: yaml
 
-# app/config/routing.yml
-prims47_paypal_express_checkout_nvp:
-    resource: "@Prims47PaypalExpressCheckoutNVPBundle/Resources/config/routing.xml"
-    prefix:   /paypal_express_checkout_nvp
+    # app/config/routing.yml
+    prims47_paypal_express_checkout_nvp:
+        resource: "@Prims47PaypalExpressCheckoutNVPBundle/Resources/config/routing.xml"
+        prefix:   /paypal_express_checkout_nvp
 
 
 Update your database schema
@@ -63,7 +63,7 @@ Update your database schema
 
 .. code-block:: bash
 
-$ php app/console doctrine:schema:update --force
+    $ php app/console doctrine:schema:update --force
 
 
 Configuration (simple version)
@@ -73,17 +73,17 @@ For paypal information you can read this Paypal_
 
 .. _Paypal: https://developer.paypal.com/docs/classic/api/apiCredentials/
 
-.. code-block:: yml
+.. code-block:: yaml
 
-# app/config/config.yml
-prims47_paypal_express_checkout_nvp:
-    user:                   #Your user account
-    signature:              #Your user signature
-    pwd:                    #Your password
-    route_redirect_success: #Your success route
-    costs:                  #Your global costs
-    cancel_route:           #Your cancel route
-    currency_code:          #Your currency code. By default is EUR
+    # app/config/config.yml
+    prims47_paypal_express_checkout_nvp:
+        user:                   #Your user account
+        signature:              #Your user signature
+        pwd:                    #Your password
+        route_redirect_success: #Your success route
+        costs:                  #Your global costs
+        cancel_route:           #Your cancel route
+        currency_code:          #Your currency code. By default is EUR
 
 Usage simple
 ------------
@@ -93,15 +93,15 @@ Create a simple basket
 
 .. code-block:: php
 
-<?php
-    Use Prims47\Bundle\PaypalExpressCheckoutNVPBundle\Payment\PaypalExpressCheckoutNVPInterface;
-    // ... 
-    public function indexAction()
-    {
-        return $this->render('YourBundle:Basket:basket.html.twig', array(
-            'basket' => array(PaypalExpressCheckoutNVPInterface::PAYPAL_TOTAL_DUTY => 100) // The price without VAT
-        ));
-    }
+    <?php
+        Use Prims47\Bundle\PaypalExpressCheckoutNVPBundle\Payment\PaypalExpressCheckoutNVPInterface;
+        // ...
+        public function indexAction()
+        {
+            return $this->render('YourBundle:Basket:basket.html.twig', array(
+                'basket' => array(PaypalExpressCheckoutNVPInterface::PAYPAL_TOTAL_DUTY => 100) // The price without VAT
+            ));
+        }
 
 
 Use Twig Helpers for Button Paypal
@@ -125,7 +125,7 @@ Exemple using simple Twig helper
 
 .. code-block::
 
-<a href="{{ prims47_paypal_express_checkout_nvp_simple(basket, '7.5', '3') }}" target="_blank">Paid</a>
+    <a href="{{ prims47_paypal_express_checkout_nvp_simple(basket, '7.5', '3') }}" target="_blank">Paid</a>
 
 
 Each transaction is save in your database
