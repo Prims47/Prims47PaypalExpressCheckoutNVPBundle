@@ -22,13 +22,13 @@ Create a details basket
             return $this->render('YourBundle:Basket:basket.html.twig', array(
                 'basket' => array(
                     array(
-                        PaypalExpressCheckoutNVPInterface::L_PAYMENTREQUEST_AMT  => 100,
+                        PaypalExpressCheckoutNVPInterface::L_PAYMENTREQUEST_AMT  => 100, // The price without VAT
                         PaypalExpressCheckoutNVPInterface::L_PAYMENTREQUEST_NAME => 'Iphone 4',
                         PaypalExpressCheckoutNVPInterface::L_PAYMENTREQUEST_QTY  => '1',
                         PaypalExpressCheckoutNVPInterface::L_PAYMENTREQUEST_DESC => 'Apple Iphone 4 ! Amazing device !',
                     ),
                     array(
-                        PaypalExpressCheckoutNVPInterface::L_PAYMENTREQUEST_AMT  => 10,
+                        PaypalExpressCheckoutNVPInterface::L_PAYMENTREQUEST_AMT  => 10, // The price without VAT
                         PaypalExpressCheckoutNVPInterface::L_PAYMENTREQUEST_NAME => 'Coque Iphone 4',
                         PaypalExpressCheckoutNVPInterface::L_PAYMENTREQUEST_QTY  => '1',
                         PaypalExpressCheckoutNVPInterface::L_PAYMENTREQUEST_DESC => 'Apple Iphone 4 ! Amazing coque device !',

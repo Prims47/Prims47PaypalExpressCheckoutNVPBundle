@@ -19,3 +19,4 @@ For paypal information you can read this Paypal_
         costs:                  #Your global costs
         cancel_route:           #Your cancel route
         currency_code:          #Your currency code. By default is EUR
+        is_prod:                #Define if you is prod environnement or dev. By default is false
