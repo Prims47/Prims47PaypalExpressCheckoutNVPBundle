@@ -96,7 +96,7 @@ abstract class BasePaypalExpressCheckoutNVP implements PaypalExpressCheckoutNVPI
     /**
      * @var string
      */
-    protected $urlRedirectSuccess;
+    protected $routeRedirectSuccess;
 
     /**
      * @var string
@@ -124,7 +124,7 @@ abstract class BasePaypalExpressCheckoutNVP implements PaypalExpressCheckoutNVPI
       $returnRouteSimple,
       $returnRouteDetails,
       $cancelRoute,
-      $urlRedirectSuccess,
+      $routeRedirectSuccess,
       $costs,
       $currencyCode,
       $version,
@@ -156,18 +156,18 @@ abstract class BasePaypalExpressCheckoutNVP implements PaypalExpressCheckoutNVPI
           'CANCELURL'                     => $this->router->generate($cancelRoute, array(), true),
         );
 
-        $this->urlApi             = $urlApi;
-        $this->isSSL              = $isSSL;
-        $this->pathSSL            = $pathSSL;
-        $this->vatPercentage      = $vatPercentage;
-        $this->urlCmd             = $urlCmd;
-        $this->urlRedirectSuccess = $urlRedirectSuccess;
-        $this->calcul             = $calcul;
-        $this->validation         = $validation;
-        $this->returnRouteDetails = $returnRouteDetails;
-        $this->returnRouteSimple  = $returnRouteSimple;
-        $this->logger             = $logger;
-        $this->dispatcher         = $dispatcher;
+        $this->urlApi               = $urlApi;
+        $this->isSSL                = $isSSL;
+        $this->pathSSL              = $pathSSL;
+        $this->vatPercentage        = $vatPercentage;
+        $this->urlCmd               = $urlCmd;
+        $this->routeRedirectSuccess = $routeRedirectSuccess;
+        $this->calcul               = $calcul;
+        $this->validation           = $validation;
+        $this->returnRouteDetails   = $returnRouteDetails;
+        $this->returnRouteSimple    = $returnRouteSimple;
+        $this->logger               = $logger;
+        $this->dispatcher           = $dispatcher;
     }
 
     /**

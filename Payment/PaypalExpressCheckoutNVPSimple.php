@@ -68,7 +68,7 @@ class PaypalExpressCheckoutNVPSimple extends BasePaypalExpressCheckoutNVP
         $this->checkTotalDutyFromPaypalExpressCheckoutNVP($response);
 
         if ($this->checkPaymentIsCompleted($response)) {
-            return $this->urlRedirectSuccess;
+            return $this->routeRedirectSuccess;
         }
 
         $checkoutDetails = $this->cleanUpResponseGetExpressCheckoutDetails($response);
@@ -98,16 +98,14 @@ class PaypalExpressCheckoutNVPSimple extends BasePaypalExpressCheckoutNVP
 
         $response = $this->getPaypalExpressCheckoutNVPResponse($this->sendToPaypalExpressCheckoutNVP($this->optionsRequest));
 
-        if (!empty($response)) {
-            $paymentDetails = array_merge($this->getSessionByName(self::PAYPAL_EXPRESS_CHECKOUT_DETAILS_SESSION_CLEAN_UP), $response, array('ITEMAMT' => $totalDuty));
+        $paymentDetails = array_merge($this->getSessionByName(self::PAYPAL_EXPRESS_CHECKOUT_DETAILS_SESSION_CLEAN_UP), $response, array('ITEMAMT' => $totalDuty));
 
-            $transaction = $this->saveTransactionDetails($paymentDetails);
+        $transaction = $this->saveTransactionDetails($paymentDetails);
 
-            $this->logger->info(sprintf('%s %s paid transaction id %d for %s %s', $paymentDetails['FIRSTNAME'], $paymentDetails['LASTNAME'], $transaction->getId(), $totalDuty, $paymentDetails['CURRENCYCODE']));
+        $this->logger->info(sprintf('%s %s paid transaction id %d for %s %s', $paymentDetails['FIRSTNAME'], $paymentDetails['LASTNAME'], $transaction->getId(), $totalDuty, $paymentDetails['CURRENCYCODE']));
 
-            $this->dispatcher->dispatch('prims47.paypal_express_checkout_nvp_success_transaction', new TransactionEvent($transaction));
+        $this->dispatcher->dispatch('prims47.paypal_express_checkout_nvp_success_transaction', new TransactionEvent($transaction));
 
-            return $this->urlRedirectSuccess;
-        }
+        return $this->routeRedirectSuccess;
     }
 } 

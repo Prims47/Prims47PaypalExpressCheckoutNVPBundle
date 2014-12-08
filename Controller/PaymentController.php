@@ -62,8 +62,8 @@ class PaymentController extends Controller
             return $this->generateUrl($getExpressCheckoutDetails);
         }
 
-        $urlRedirect = $paypal->doExpressCheckoutPayment($request->get('PayerID'), $request->get('token'));
+        $routeRedirect = $paypal->doExpressCheckoutPayment($request->get('PayerID'), $request->get('token'));
 
-        return $this->generateUrl($urlRedirect);
+        return $this->generateUrl($routeRedirect);
     }
 } 
