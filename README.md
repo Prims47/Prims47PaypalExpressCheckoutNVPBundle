@@ -77,7 +77,7 @@ prims47_paypal_express_checkout_nvp:
     public function indexAction()
     {
         return $this->render('YourBundle:Basket:basket.html.twig', array(
-            'basket' => array(PaypalExpressCheckoutNVPInterface::PAYPAL_TOTAL_DUTY => 100)
+            'basket' => array(PaypalExpressCheckoutNVPInterface::PAYPAL_TOTAL_DUTY => 100) // The price without VAT
         ));
     }
 ```
