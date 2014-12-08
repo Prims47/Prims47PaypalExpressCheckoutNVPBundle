@@ -25,4 +25,5 @@ Installation
 Read `Installation <https://github.com/Prims47/Prims47PaypalExpressCheckoutNVPBundle/tree/master/Resources/doc/installation.rst>`_
 
 For simple version of this Bundle read `here <https://github.com/Prims47/Prims47PaypalExpressCheckoutNVPBundle/tree/master/Resources/doc/simple.rst>`_
+
 For details version of this Bundle read `here <https://github.com/Prims47/Prims47PaypalExpressCheckoutNVPBundle/tree/master/Resources/doc/details.rst>`_
