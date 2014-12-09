@@ -13,13 +13,16 @@ namespace Prims47\Bundle\PaypalExpressCheckoutNVPBundle\Tests\Payment;
 
 use Guzzle\Http\Message\Response as GuzzleResponse;
 
+use Prims47\Bundle\PaypalExpressCheckoutNVPBundle\Entity\BasePaypalExpressCheckoutNVPTransactionDetails;
 use Prims47\Bundle\PaypalExpressCheckoutNVPBundle\Payment\PaypalExpressCheckoutNVPInterface;
 use Prims47\Bundle\PaypalExpressCheckoutNVPBundle\Payment\PaypalExpressCheckoutNVPSimple;
+
+use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 use Symfony\Component\HttpFoundation\Session\Storage\MockArraySessionStorage;
 use Symfony\Component\HttpFoundation\Session\Session;
 
-class PaypalExpressCheckoutNVPSimpleTest extends \PHPUnit_Framework_TestCase
+class PaypalExpressCheckoutNVPSimpleTest extends KernelTestCase
 {
     /**
      * @var PaypalExpressCheckoutNVPSimple
@@ -36,11 +39,24 @@ class PaypalExpressCheckoutNVPSimpleTest extends \PHPUnit_Framework_TestCase
      */
     protected $session;
 
+    /**
+     * @var
+     */
+    protected $doctrine;
+
     protected function setUp()
     {
+        self::bootKernel();
+
         $this->session                        = new Session(new MockArraySessionStorage());
-        $this->paypalExpressCheckoutNVPSimple = $this->preparePaypalExpressCheckoutNVPSimple();
         $this->guzzleResponse                 = $this->getMockBuilder('Guzzle\Http\Message\Response')->disableOriginalConstructor()->getMock();
+        $this->doctrine                       = static::$kernel->getContainer()->get('doctrine');
+        $this->paypalExpressCheckoutNVPSimple = $this->preparePaypalExpressCheckoutNVPSimple();
+    }
+
+    protected function tearDown()
+    {
+        parent::tearDown();
     }
 
     public function testGetPaypalExpressCheckoutNVPResponse()
@@ -198,6 +214,42 @@ class PaypalExpressCheckoutNVPSimpleTest extends \PHPUnit_Framework_TestCase
         $this->invokeMethod($this->paypalExpressCheckoutNVPSimple, 'checkTotalDutyFromPaypalExpressCheckoutNVP', array(array()));
     }
 
+    public function testSaveTransactionDetails()
+    {
+        $paymentDetails = array(
+          'FIRSTNAME'                   => 'Ilan',
+          'LASTNAME'                    => 'B',
+          'COUNTRYCODE'                 => 'FR',
+          'SHIPTOCOUNTRYNAME'           => 'France',
+          'SHIPTOSTREET'                => '157 rue Anatole France',
+          'SHIPTOCITY'                  => 'Levallois',
+          'SHIPTOZIP'                   => '92',
+          'CURRENCYCODE'                => 'EUR',
+          'PAYMENTINFO_0_ORDERTIME'     => '2014-12-08',
+          'PAYMENTINFO_0_TRANSACTIONID' => md5(uniqid(rand(), true)),
+          'ITEMAMT'                     => '100',
+          'TAXAMT'                      => '10',
+          'HANDLINGAMT'                 => '10',
+        );
+
+        /** @var BasePaypalExpressCheckoutNVPTransactionDetails $transaction */
+        $transaction = $this->invokeMethod($this->paypalExpressCheckoutNVPSimple, 'saveTransactionDetails', array($paymentDetails));
+
+        $this->assertEquals($paymentDetails['FIRSTNAME'], $transaction->getFirstName());
+        $this->assertEquals($paymentDetails['LASTNAME'], $transaction->getLastName());
+        $this->assertEquals($paymentDetails['COUNTRYCODE'], $transaction->getCountryCode());
+        $this->assertEquals($paymentDetails['SHIPTOCOUNTRYNAME'], $transaction->getCountryName());
+        $this->assertEquals($paymentDetails['SHIPTOSTREET'], $transaction->getStreet());
+        $this->assertEquals($paymentDetails['SHIPTOCITY'], $transaction->getCity());
+        $this->assertEquals($paymentDetails['SHIPTOZIP'], $transaction->getZip());
+        $this->assertEquals($paymentDetails['CURRENCYCODE'], $transaction->getCurrencyCode());
+        $this->assertEquals($paymentDetails['PAYMENTINFO_0_ORDERTIME'], $transaction->getOrderTime()->format('Y-m-d'));
+        $this->assertEquals($paymentDetails['PAYMENTINFO_0_TRANSACTIONID'], $transaction->getTransactionId());
+        $this->assertEquals($paymentDetails['ITEMAMT'], $transaction->getTotalDuty());
+        $this->assertEquals($paymentDetails['TAXAMT'], $transaction->getTax());
+        $this->assertEquals($paymentDetails['HANDLINGAMT'], $transaction->getCosts());
+    }
+
     /**
      * Prepare PaypalExpressCheckoutNVPSimple
      *
@@ -208,7 +260,7 @@ class PaypalExpressCheckoutNVPSimpleTest extends \PHPUnit_Framework_TestCase
         return new PaypalExpressCheckoutNVPSimple(
           $this->getMockBuilder('Symfony\Component\Routing\Router')->disableOriginalConstructor()->getMock(),
           $this->session,
-          $this->getMockBuilder('Doctrine\Bundle\DoctrineBundle\Registry')->disableOriginalConstructor()->getMock(),
+          $this->doctrine,
           $this->getMockBuilder('Guzzle\Http\Client')->disableOriginalConstructor()->getMock(),
           'Prims47',
           'Prims47Signature',
