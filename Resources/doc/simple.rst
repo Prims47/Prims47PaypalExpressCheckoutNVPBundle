@@ -1,11 +1,6 @@
 Prims47PaypalExpressCheckoutNVP
 ===============================
 
-Configuration
--------------
-
-Read `here <https://github.com/Prims47/Prims47PaypalExpressCheckoutNVPBundle/tree/master/Resources/doc/simple_configuration.rst>`_
-
 Usage simple
 ------------
 
