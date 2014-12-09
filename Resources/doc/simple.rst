@@ -20,10 +20,10 @@ Create a simple basket
         }
 
 
-Use Twig Helpers for Button Paypal
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Use Twig Helper
+^^^^^^^^^^^^^^^
 
-You can use Twig helpers
+You can use Twig helper
 
 * prims47_paypal_express_checkout_nvp_simple
 
