@@ -61,6 +61,14 @@ class ValidationTest extends \PHPUnit_Framework_TestCase
     /**
      * @expectedException \Exception
      */
+    public function testValidPaypalFullBasketIsArray()
+    {
+        $this->validation->validPaypalFullBasket(array(true));
+    }
+
+    /**
+     * @expectedException \Exception
+     */
     public function testValidPaypalFullBasketNameIsEmpty()
     {
         unset($this->basket[0][PaypalExpressCheckoutNVPInterface::L_PAYMENTREQUEST_NAME]);
