@@ -1,8 +1,8 @@
 Prims47PaypalExpressCheckoutNVP
 ===============================
 
-Usage simple
-------------
+Usage details
+-------------
 
 Create a details basket
 ^^^^^^^^^^^^^^^^^^^^^^^
